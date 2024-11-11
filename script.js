@@ -14,7 +14,7 @@ class Tree {
 
 
     buildTree(treeValues) {
-        treeValues = this.sortArray(treeValues);
+        const sortedTreeValues = this.sortArray(treeValues);
     }
 
 
