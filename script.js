@@ -11,21 +11,19 @@ class Node {
 class Tree {
     constructor(values) {
         this.values = values;
-        this.root = this.buildTree(values);
+        this.root = this.buildTree(this.sortArray(values));
     }
 
     buildTree(values) {
-        const sortedValues = this.sortArray(values);
-
-        let arrayMid = Math.floor((sortedValues.length) / 2);
-        let root = new Node(sortedValues[arrayMid]);
+        let arrayMid = Math.floor((values.length) / 2);
+        let root = new Node(values[arrayMid]);
 
         if (values.length == 1) {
             return new Node(values[0]);
         }
 
-        let leftArray = sortedValues.slice(0, arrayMid);
-        let rightArray = sortedValues.slice(arrayMid + 1, sortedValues.length);
+        let leftArray = values.slice(0, arrayMid);
+        let rightArray = values.slice(arrayMid + 1, values.length);
 
         root.left = this.buildTree(leftArray);
         root.right = this.buildTree(rightArray)
