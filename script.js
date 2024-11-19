@@ -48,6 +48,18 @@ class Tree {
 
 
 
+
+    /**
+     *  Height is defined as the number of edges in the longest path from a given node to a leaf node.
+     *  @return given node heigh
+     */
+
+    height(node) {
+
+    }
+
+
+
     sortArray(arr) {
         return Array.from(new Set(arr)).sort((a, b) => a - b);
     }
