@@ -16,12 +16,17 @@ class Tree {
 
     buildTree(values) {
 
+        if (values.length == 0) {
+            return null;
+        }
 
-        if (values.length == 1) {
+        else if (values.length == 1) {
             return new Node(values[0]);
         }
 
         let arrayMid = Math.floor((values.length) / 2);
+
+
         let root = new Node(values[arrayMid]);
 
         let leftArray = values.slice(0, arrayMid);
@@ -34,6 +39,8 @@ class Tree {
 
         return root;
     }
+
+
 
     prettyPrint = (node = binaryTree.root, prefix = "", isLeft = true) => {
         if (node === null) {
@@ -94,7 +101,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 26, 44]);
+let binaryTree = new Tree([1, 2, 3, 4]);
 binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
 
