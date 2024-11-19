@@ -1,5 +1,5 @@
 class Node {
-    constructor(data = null) {
+    constructor(data) {
         this.data = data;
         this.left = null;
         this.right = null;
@@ -15,12 +15,14 @@ class Tree {
     }
 
     buildTree(values) {
-        let arrayMid = Math.floor((values.length) / 2);
-        let root = new Node(values[arrayMid]);
+
 
         if (values.length == 1) {
             return new Node(values[0]);
         }
+
+        let arrayMid = Math.floor((values.length) / 2);
+        let root = new Node(values[arrayMid]);
 
         let leftArray = values.slice(0, arrayMid);
         let rightArray = values.slice(arrayMid + 1, values.length);
@@ -55,6 +57,27 @@ class Tree {
      */
 
     height(node) {
+        console.log(node);
+
+        let leftHeight = 0;
+        let rightHeight = 0;
+
+
+        if (node.left == null || node.right == null) {
+            return 1;
+        }
+
+        leftHeight += this.height(node.left);
+        rightHeight += this.height(node.right);
+
+        if (leftHeight > rightHeight) {
+            return leftHeight + 1;
+        }
+
+        else {
+            return rightHeight + 1;;
+        }
+
 
     }
 
@@ -71,7 +94,10 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 3, 4, 6, 7, 2, 5, 4, 4, 4,]);
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 26, 44]);
+binaryTree.prettyPrint();
+console.log(binaryTree.height(binaryTree.root));
+
 
 
 
