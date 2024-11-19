@@ -64,26 +64,24 @@ class Tree {
      */
 
     height(node) {
-        console.log(node);
-
         let leftHeight = 0;
         let rightHeight = 0;
 
 
-        if (node.left == null || node.right == null) {
+        if (node.left == null && node.right == null) {
             return 1;
         }
 
-        leftHeight += this.height(node.left);
-        rightHeight += this.height(node.right);
-
-        if (leftHeight > rightHeight) {
-            return leftHeight + 1;
+        if (node.left != null) {
+            leftHeight += this.height(node.left);
         }
 
-        else {
-            return rightHeight + 1;;
+        if (node.right != null) {
+            rightHeight += this.height(node.right);
         }
+
+
+        return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1
 
 
     }
@@ -101,7 +99,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4]);
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
 binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
 
