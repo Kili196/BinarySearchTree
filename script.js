@@ -67,7 +67,6 @@ class Tree {
         let leftHeight = 0;
         let rightHeight = 0;
 
-
         if (node.left == null && node.right == null) {
             return 1;
         }
@@ -80,10 +79,18 @@ class Tree {
             rightHeight += this.height(node.right);
         }
 
-
         return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1
+    }
 
 
+
+    isBalanced() {
+        let heightOfTree = Math.abs(this.height(this.root.left) - this.height(this.root.right));
+
+        if (heightOfTree > 1) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -99,9 +106,11 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 19]);
 binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
+
+console.log(binaryTree.isBalanced())
 
 
 
