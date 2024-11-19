@@ -83,14 +83,22 @@ class Tree {
     }
 
 
+    /**
+     * 
+     Write an isBalanced function that checks if the tree is balanced
+     A balanced tree is one where the difference between heights of the left 
+     subtree and the right subtree of every node is not more than 1.
+     */
 
     isBalanced() {
         let heightOfTree = Math.abs(this.height(this.root.left) - this.height(this.root.right));
 
+        console.log(heightOfTree)
+
         if (heightOfTree > 1) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 
@@ -106,7 +114,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 19]);
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 63, 69, 60]);
 binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
 
