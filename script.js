@@ -112,14 +112,13 @@ class Tree {
             }
 
             if (key.data > root.data) {
-
-
-
-                root.left = insertNodeRecursive(root.left, key);
-            }
-            else if (key.data < root.data) {
                 root.right = insertNodeRecursive(root.right, key);
             }
+            else if (key.data < root.data) {
+                root.left = insertNodeRecursive(root.left, key);
+            }
+
+            return root;
         }
 
         insertNodeRecursive(currentNode, newNode);
@@ -141,13 +140,17 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 63, 69, 60]);
+let binaryTree = new Tree([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 63, 69, 60]);
 binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
 
 console.log(binaryTree.isBalanced())
 
-binaryTree.insert(70);
+binaryTree.insert(71);
+
+binaryTree.prettyPrint();
+
+
 
 
 
