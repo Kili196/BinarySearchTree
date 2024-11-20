@@ -101,6 +101,33 @@ class Tree {
         return true;
     }
 
+    insert(value) {
+        let newNode = new Node(value);
+        let currentNode = this.root;
+
+        function insertNodeRecursive(root, key) {
+
+            if (root.left == null || root.right == null) {
+                return key;
+            }
+
+            if (key.data > root.data) {
+
+
+
+                root.left = insertNodeRecursive(root.left, key);
+            }
+            else if (key.data < root.data) {
+                root.right = insertNodeRecursive(root.right, key);
+            }
+        }
+
+        insertNodeRecursive(currentNode, newNode);
+
+    }
+
+
+
 
 
     sortArray(arr) {
@@ -119,6 +146,9 @@ binaryTree.prettyPrint();
 console.log(binaryTree.height(binaryTree.root));
 
 console.log(binaryTree.isBalanced())
+
+binaryTree.insert(70);
+
 
 
 
