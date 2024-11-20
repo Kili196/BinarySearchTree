@@ -107,7 +107,8 @@ class Tree {
 
         function insertNodeRecursive(root, key) {
 
-            if (root.left == null || root.right == null) {
+
+            if (root == null) {
                 return key;
             }
 
@@ -115,13 +116,14 @@ class Tree {
                 root.right = insertNodeRecursive(root.right, key);
             }
             else if (key.data < root.data) {
+
                 root.left = insertNodeRecursive(root.left, key);
             }
 
             return root;
         }
 
-        insertNodeRecursive(currentNode, newNode);
+        console.log(insertNodeRecursive(currentNode, newNode));
 
     }
 
