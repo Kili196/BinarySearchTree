@@ -128,6 +128,33 @@ class Tree {
     }
 
 
+    rebalanace(root) {
+
+
+    }
+
+    levelOrder(callback) {
+        if (!typeof callback === "function") {
+            throw new Error("Callback not a function");
+        }
+
+        let queue = [this.root];
+
+        while (queue.length != 0) {
+            let currentNode = queue.shift();
+            if (currentNode.left != null) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right != null) {
+                queue.push(currentNode.right);
+            }
+            callback(currentNode);
+        }
+    }
+
+
+
+
 
 
 
@@ -142,15 +169,27 @@ class Tree {
 
 
 
-let binaryTree = new Tree([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 63, 69, 60]);
-binaryTree.prettyPrint();
-console.log(binaryTree.height(binaryTree.root));
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
 
-console.log(binaryTree.isBalanced())
 
-binaryTree.insert(71);
+
 
 binaryTree.prettyPrint();
+
+
+binaryTree.rebalanace(binaryTree.root);
+
+function printCurrentNode(currentNode) {
+    console.log(currentNode);
+}
+
+binaryTree.levelOrder(printCurrentNode);
+
+
+
+
+
+
 
 
 
