@@ -93,7 +93,6 @@ class Tree {
     isBalanced() {
         let heightOfTree = Math.abs(this.height(this.root.left) - this.height(this.root.right));
 
-        console.log(heightOfTree)
 
         if (heightOfTree > 1) {
             return false;
@@ -128,8 +127,17 @@ class Tree {
     }
 
 
-    rebalanace(root) {
 
+
+    rebalanace() {
+        let unsortedValuesOfTree = [];
+
+        function getCurrentValue(currentNode) {
+            unsortedValuesOfTree.push(currentNode.data);
+        }
+
+        this.levelOrder(getCurrentValue)
+        this.root = this.buildTree(this.root = this.sortArray(unsortedValuesOfTree));
 
     }
 
@@ -153,11 +161,6 @@ class Tree {
     }
 
 
-
-
-
-
-
     sortArray(arr) {
         return Array.from(new Set(arr)).sort((a, b) => a - b);
     }
@@ -174,16 +177,16 @@ let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
 
 
 
-binaryTree.prettyPrint();
+
+binaryTree.insert(9);
+binaryTree.insert(10);
 
 
-binaryTree.rebalanace(binaryTree.root);
 
-function printCurrentNode(currentNode) {
-    console.log(currentNode);
-}
 
-binaryTree.levelOrder(printCurrentNode);
+
+
+
 
 
 
