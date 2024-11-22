@@ -218,6 +218,10 @@ class Tree {
 
     postOrder(callback, node = this.root) {
 
+        if (!typeof callback === "function") {
+            throw new Error("Callback not a function");
+        }
+
         if (node == null) {
             return
         }
