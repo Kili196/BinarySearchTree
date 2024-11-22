@@ -126,6 +126,28 @@ class Tree {
 
     }
 
+    deleteItem(value, node = this.root) {
+
+
+
+        if (value === node.data) {
+            return null;
+        }
+
+
+
+        if (value < node.data) {
+            node.left = this.deleteItem(value, node.left);
+
+        }
+        else {
+            node.right = this.deleteItem(value, node.right);
+        }
+
+        return node;
+
+    }
+
 
 
 
@@ -229,9 +251,6 @@ class Tree {
         this.postOrder(callback, node.left);
         this.postOrder(callback, node.right);
         console.log(node);
-
-
-
     }
 
 
@@ -246,7 +265,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+let binaryTree = new Tree([1, 2, 3, 4]);
 
 
 
@@ -258,7 +277,18 @@ let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
 binaryTree.rebalanace();
 binaryTree.prettyPrint();
 
-binaryTree.postOrder();
+
+
+binaryTree.deleteItem(1);
+
+binaryTree.prettyPrint();
+
+
+
+
+
+
+
 
 
 
