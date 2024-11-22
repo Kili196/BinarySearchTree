@@ -210,7 +210,23 @@ class Tree {
 
     }
 
-    postOrder(callback) {
+    /**
+     * The post order traversal technique follows the Left Right Root policy.
+     * Here, Left Right Root means the left subtree of the root node is traversed first, 
+     * then the right subtree, and finally, the root node is traversed.
+     */
+
+    postOrder(callback, node = this.root) {
+
+        if (node == null) {
+            return
+        }
+
+        this.postOrder(callback, node.left);
+        this.postOrder(callback, node.right);
+        console.log(node);
+
+
 
     }
 
@@ -237,6 +253,8 @@ let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
 
 binaryTree.rebalanace();
 binaryTree.prettyPrint();
+
+binaryTree.postOrder();
 
 
 
