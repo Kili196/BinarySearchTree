@@ -187,7 +187,26 @@ class Tree {
 
     }
 
-    preOrder(callback) {
+    /**
+     * 
+     * In preorder traversal, first, 
+     * root node is visited, then left sub-tree and after that right sub-tree is visited. 
+     * The process of preorder traversal can be represented as -
+     */
+
+    preOrder(callback, node = this.root) {
+
+        if (!typeof callback === "function") {
+            throw new Error("Callback not a function");
+        }
+
+        if (node == null) {
+            return
+        }
+
+        callback(node);
+        this.preOrder(callback, node.left);
+        this.preOrder(callback, node.right);
 
     }
 
@@ -219,7 +238,6 @@ let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
 binaryTree.rebalanace();
 binaryTree.prettyPrint();
 
-binaryTree.inOrder()
 
 
 
