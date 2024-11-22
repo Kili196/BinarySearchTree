@@ -137,7 +137,7 @@ class Tree {
         }
 
         this.levelOrder(getCurrentValue)
-        this.root = this.buildTree(this.root = this.sortArray(unsortedValuesOfTree));
+        this.root = this.buildTree(this.sortArray(unsortedValuesOfTree));
 
     }
 
@@ -160,6 +160,41 @@ class Tree {
         }
     }
 
+    /**
+     * 
+     *  Traverse the left subtree, i.e., call Inorder(left->subtree) 
+        Visit the root. 
+        Traverse the right subtree, i.e., call Inorder(right->subtree) } callback 
+     */
+
+    inOrder(callback, node = this.root) {
+
+        if (!typeof callback === "function") {
+            throw new Error("Callback not a function");
+        }
+
+        if (node == null) {
+            return;
+        }
+
+
+        this.inOrder(callback, node.left);
+
+        callback(node);
+
+        this.inOrder(callback, node.right);
+
+
+    }
+
+    preOrder(callback) {
+
+    }
+
+    postOrder(callback) {
+
+    }
+
 
     sortArray(arr) {
         return Array.from(new Set(arr)).sort((a, b) => a - b);
@@ -172,14 +207,19 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+let binaryTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
 
 
 
 
 
-binaryTree.insert(9);
-binaryTree.insert(10);
+
+
+
+binaryTree.rebalanace();
+binaryTree.prettyPrint();
+
+binaryTree.inOrder()
 
 
 
