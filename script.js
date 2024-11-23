@@ -150,14 +150,17 @@ class Tree {
 
 
 
-            let minNode = this.findMin(node.right);
+            let successorNode = this.findMin(node.right);
+            console.log(successorNode);
             let temp = node.left;
-            node = minNode;
+            node = successorNode;
             node.left = temp;
         }
 
         return node;
     }
+
+
 
     findMin(node) {
 
@@ -177,7 +180,7 @@ class Tree {
     }
 
 
-    findMax(node) {
+    findMax(node = this.root) {
 
         if (node.right == null || node.left == null) {
             return node;
@@ -194,9 +197,7 @@ class Tree {
     }
 
 
-    predecessor() {
 
-    }
 
 
 
@@ -317,7 +318,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([10, 13, 17, 19, 24, 28, 35]);
+let binaryTree = new Tree([10, 20, 30, 50, 60, 13, 11]);
 
 
 
@@ -326,20 +327,21 @@ let binaryTree = new Tree([10, 13, 17, 19, 24, 28, 35]);
 
 
 
-binaryTree.rebalanace();
+
 binaryTree.prettyPrint();
-
-
-
-binaryTree.rebalanace();
-
-
-
 console.log("---------")
 
 
 
+binaryTree.deleteItem(20);
 binaryTree.prettyPrint();
+
+
+
+
+
+
+
 
 
 
