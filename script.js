@@ -47,6 +47,7 @@ class Tree {
             return;
         }
         if (node.right !== null) {
+
             this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
         }
         console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
@@ -122,44 +123,40 @@ class Tree {
             return root;
         }
 
-        console.log(insertNodeRecursive(currentNode, newNode));
+        insertNodeRecursive(currentNode, newNode);
 
     }
 
     deleteItem(value, node = this.root) {
-
-
-
-        if (value === node.data) {
-
-            if (node.right != null || node.left != null) {
-
-                let minNode = this.findMin(node.right);
-                minNode.left = node.left;
-
-                return minNode;
-
-            }
-
-
-
+        if (node == null) {
             return null;
         }
-
-
 
         if (value < node.data) {
             node.left = this.deleteItem(value, node.left);
 
         }
-        else {
+        else if (value > node.data) {
             node.right = this.deleteItem(value, node.right);
         }
-        if (!this.isBalanced()) {
-            this.node = this.rebalanace();
-        }
-        return node;
 
+        else {
+            if (node.left == null) {
+                return node.right;
+            }
+            else if (node.right == null) {
+                return node.left;
+            }
+
+
+
+            let minNode = this.findMin(node.right);
+            let temp = node.left;
+            node = minNode;
+            node.left = temp;
+        }
+
+        return node;
     }
 
     findMin(node) {
@@ -174,6 +171,7 @@ class Tree {
         else if (node.left.data < node.data) {
             return node.left;
         }
+
         node = this.findMin(node)
         return node;
     }
@@ -193,6 +191,11 @@ class Tree {
         }
         node = this.finddMax(node)
         return node;
+    }
+
+
+    predecessor() {
+
     }
 
 
@@ -299,7 +302,7 @@ class Tree {
 
         this.postOrder(callback, node.left);
         this.postOrder(callback, node.right);
-        console.log(node);
+
     }
 
 
@@ -326,12 +329,16 @@ let binaryTree = new Tree([10, 13, 17, 19, 24, 28, 35]);
 binaryTree.rebalanace();
 binaryTree.prettyPrint();
 
-binaryTree.insert(11);
 
 
-binaryTree.deleteItem(13);
-binaryTree.deleteItem(10);
-binaryTree.deleteItem(19);
+binaryTree.rebalanace();
+
+
+
+console.log("---------")
+
+
+
 binaryTree.prettyPrint();
 
 
