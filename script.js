@@ -128,7 +128,7 @@ class Tree {
     }
 
     deleteItem(value, node = this.root) {
-        console.log(value)
+
         if (node == null) {
             return null;
         }
@@ -149,13 +149,9 @@ class Tree {
                 return node.left;
             }
 
-
-
             let successorNode = this.findMin(node.right);
             this.deleteItem(successorNode.data);
             node.data = successorNode.data;
-
-
         }
 
         return node;
@@ -316,28 +312,34 @@ class Tree {
 
 
 
+//testing binary search tree
 
+let binaryTree = new Tree([10, 20, 30, 50, 60, 13, 11, 44, 35, 36, 85, 37, 85, 24, 36, 29, 28, 95, 74, 73, 94, 38, 27]);
 
-let binaryTree = new Tree([10, 20, 30, 50, 60, 13, 11]);
+console.log(binaryTree.isBalanced());
 
+binaryTree.prettyPrint()
 
-
-
-
-
-
-
+binaryTree.insert(110);
+binaryTree.insert(130);
+binaryTree.insert(140);
+binaryTree.insert(150);
 
 binaryTree.prettyPrint();
-console.log("---------")
 
+console.log(binaryTree.isBalanced());
 
+binaryTree.rebalanace();
 
-binaryTree.deleteItem(11);
-binaryTree.deleteItem(13);
+console.log(binaryTree.isBalanced());
+
 binaryTree.prettyPrint();
-binaryTree.deleteItem(20);
+
+
+binaryTree.deleteItem(38);
+
 binaryTree.prettyPrint();
+
 
 
 
