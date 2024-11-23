@@ -133,7 +133,12 @@ class Tree {
         if (value === node.data) {
 
             if (node.right != null || node.left != null) {
-                console.log("hi")
+
+                let minNode = this.findMin(node.right);
+                minNode.left = node.left;
+
+                return minNode;
+
             }
 
 
@@ -150,12 +155,19 @@ class Tree {
         else {
             node.right = this.deleteItem(value, node.right);
         }
-
+        if (!this.isBalanced()) {
+            this.node = this.rebalanace();
+        }
         return node;
 
     }
 
     findMin(node) {
+
+        if (node.right == null || node.left == null) {
+            return node;
+        }
+
         if (node.right.data < node.data) {
             return node.right;
         }
@@ -163,6 +175,23 @@ class Tree {
             return node.left;
         }
         node = this.findMin(node)
+        return node;
+    }
+
+
+    findMax(node) {
+
+        if (node.right == null || node.left == null) {
+            return node;
+        }
+
+        if (node.right.data > node.data) {
+            return node.right;
+        }
+        else if (node.left.data > node.data) {
+            return node.left;
+        }
+        node = this.finddMax(node)
         return node;
     }
 
@@ -297,9 +326,14 @@ let binaryTree = new Tree([10, 13, 17, 19, 24, 28, 35]);
 binaryTree.rebalanace();
 binaryTree.prettyPrint();
 
+binaryTree.insert(11);
 
-console.log(binaryTree.findMin(binaryTree.root.right));
+
 binaryTree.deleteItem(13);
+binaryTree.deleteItem(10);
+binaryTree.deleteItem(19);
+binaryTree.prettyPrint();
+
 
 
 
