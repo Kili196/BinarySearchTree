@@ -128,6 +128,7 @@ class Tree {
     }
 
     deleteItem(value, node = this.root) {
+        console.log(value)
         if (node == null) {
             return null;
         }
@@ -151,15 +152,14 @@ class Tree {
 
 
             let successorNode = this.findMin(node.right);
-            console.log(successorNode);
-            let temp = node.left;
-            node = successorNode;
-            node.left = temp;
+            this.deleteItem(successorNode.data);
+            node.data = successorNode.data;
+
+
         }
 
         return node;
     }
-
 
 
     findMin(node) {
@@ -333,6 +333,9 @@ console.log("---------")
 
 
 
+binaryTree.deleteItem(11);
+binaryTree.deleteItem(13);
+binaryTree.prettyPrint();
 binaryTree.deleteItem(20);
 binaryTree.prettyPrint();
 
