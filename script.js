@@ -131,6 +131,13 @@ class Tree {
 
 
         if (value === node.data) {
+
+            if (node.right != null || node.left != null) {
+                console.log("hi")
+            }
+
+
+
             return null;
         }
 
@@ -147,6 +154,19 @@ class Tree {
         return node;
 
     }
+
+    findMin(node) {
+        if (node.right.data < node.data) {
+            return node.right;
+        }
+        else if (node.left.data < node.data) {
+            return node.left;
+        }
+        node = this.findMin(node)
+        return node;
+    }
+
+
 
 
 
@@ -265,7 +285,7 @@ class Tree {
 
 
 
-let binaryTree = new Tree([1, 2, 3, 4]);
+let binaryTree = new Tree([10, 13, 17, 19, 24, 28, 35]);
 
 
 
@@ -278,10 +298,10 @@ binaryTree.rebalanace();
 binaryTree.prettyPrint();
 
 
+console.log(binaryTree.findMin(binaryTree.root.right));
+binaryTree.deleteItem(13);
 
-binaryTree.deleteItem(1);
 
-binaryTree.prettyPrint();
 
 
 
